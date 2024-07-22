@@ -1,16 +1,16 @@
-const config = {
+const paginator = {
   limit: 20,
   offset: 0,
 };
 
 export function setOffset(offset) {
-  config.offset = offset;
+  paginator.offset = offset;
 }
 
 export function getOffset() {
-  return config.offset;
+  return paginator.offset;
 }
 
 export function getLimit() {
-  return config.limit;
+  return paginator.limit;
 }
