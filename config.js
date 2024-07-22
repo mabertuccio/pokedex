@@ -3,8 +3,8 @@ const config = {
   offset: 0,
 };
 
-export function setOffset(newOffset) {
-  config.offset = newOffset;
+export function setOffset(offset) {
+  config.offset = offset;
 }
 
 export function getOffset() {
