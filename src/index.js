@@ -2,9 +2,6 @@ import { getPokemons } from "./api/apiCalls.js";
 import { updatePokemonList } from "./ui/pokemonListFunctions.js";
 import { handleButtonClick } from "./ui/buttonEventHandlers.js";
 
-window.limit = 20;
-window.offset = 0;
-
 const $previousButton = document.querySelector("#previous-button");
 $previousButton.addEventListener("click", handleButtonClick);
 
