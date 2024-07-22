@@ -1,4 +1,4 @@
-import { getPokemon } from "./api/apiCalls.js";
+import { getPokemons } from "./api/apiCalls.js";
 import { updatePokemonList } from "./ui/pokemonListFunctions.js";
 import { handleButtonClick } from "./ui/buttonEventHandlers.js";
 
@@ -12,7 +12,7 @@ const $nextButton = document.querySelector("#next-button");
 $nextButton.addEventListener("click", handleButtonClick);
 
 export async function init() {
-  const data = await getPokemon();
+  const data = await getPokemons();
   updatePokemonList(data);
 }
 
