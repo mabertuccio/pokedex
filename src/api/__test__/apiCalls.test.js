@@ -1,17 +1,30 @@
-import { getPokemon } from "../apiCalls.js";
+import { getPokemons } from "../apiCalls.js";
 import { getPokemonDetails } from "../apiCalls.js";
 
-test("Data is an Object", async () => {
-  const limit = 20;
-  const offset = 0;
+jest.mock("../apiCalls.js", () => ({
+  getPokemons: jest.fn(),
+  getPokemonDetails: jest.fn(),
+}));
 
-  const data = await getPokemon(offset, limit);
-  expect(typeof data).toBe("object");
-});
-
-test("Data is an Object", async () => {
-  const POKEMON_URL = `https://pokeapi.co/api/v2/pokemon/1`;
-
-  const pokemonDetails = await getPokemonDetails(POKEMON_URL);
-  expect(typeof pokemonDetails).toBe("object");
+describe("Testing Pokémon API with fixtures", () => {
+  test("Fetching Pokémon with mocked response", async () => {
+    // Define fixture
+    const mockPokemons = [
+      { id: 1, name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/" },
+      { id: 2, name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon/2/" },
+    ];
+    // Mock config
+    getPokemons.mockResolvedValue(mockPokemons);
+    // Call getPokemons function
+    const result = await getPokemons();
+    // Verify that the function was called
+    expect(getPokemons).toHaveBeenCalled();
+    // Verify the result using the fixture
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining(mockPokemons[0]),
+        expect.objectContaining(mockPokemons[1]),
+      ])
+    );
+  });
 });

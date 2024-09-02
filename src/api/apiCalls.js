@@ -1,6 +1,6 @@
 import { getOffset, getLimit } from "../../config.js";
 
-export async function getPokemon() {
+export async function getPokemons() {
   const offset = getOffset();
   const limit = getLimit();
 
